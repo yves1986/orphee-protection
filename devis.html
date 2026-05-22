@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devis - Pack Digital Orphée Protection</title>
+    <title>Devis Pack Digital - Orphée Pro</title>
     <style>
         * {
             margin: 0;
@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a3a5c 0%, #2c5282 100%);
+            background: #e0f0ff;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -22,523 +22,327 @@
             padding: 40px 20px;
         }
 
-        .devis-container {
-            max-width: 1100px;
+        .devis {
+            max-width: 900px;
             width: 100%;
             background: white;
-            border-radius: 25px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
 
-        .devis-header {
-            background: linear-gradient(135deg, #c0392b, #8b1a1a);
+        /* Entête */
+        .entete {
+            background: #1a8cff;
             color: white;
-            padding: 40px;
+            padding: 30px;
             text-align: center;
         }
 
-        .devis-header h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-        }
-
-        .devis-header h1 span {
+        .entete h1 {
+            font-size: 28px;
             font-weight: normal;
-            opacity: 0.9;
         }
 
-        .devis-header p {
-            font-size: 18px;
-            opacity: 0.9;
-        }
-
-        .devis-badge {
-            display: inline-block;
-            background: #f39c12;
-            color: #1a3a5c;
-            padding: 8px 20px;
-            border-radius: 50px;
+        .entete h1 span {
             font-weight: bold;
-            margin-top: 20px;
-            font-size: 24px;
         }
 
-        .devis-body {
-            padding: 40px;
+        .entete .titre {
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 10px;
         }
 
-        .info-section {
+        .entete .ref {
+            margin-top: 15px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Corps */
+        .corps {
+            padding: 30px;
+        }
+
+        /* Infos */
+        .infos {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #eee;
+            border-bottom: 1px solid #e0e0e0;
             flex-wrap: wrap;
             gap: 15px;
         }
 
-        .info-box h3 {
-            color: #c0392b;
-            margin-bottom: 10px;
-            font-size: 14px;
+        .info p:first-child {
+            font-size: 12px;
+            color: #888;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .info-box p {
-            color: #333;
-            font-weight: 500;
+        .info p:last-child {
+            font-weight: bold;
+            color: #1a8cff;
         }
 
-        /* SECTION GAINS */
-        .gains-section {
-            background: linear-gradient(135deg, #1a3a5c, #2c5282);
-            color: white;
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 40px;
+        /* Gains */
+        .gains {
+            background: #e8f4ff;
+            padding: 25px;
+            border-radius: 15px;
             text-align: center;
+            margin-bottom: 30px;
         }
 
-        .gains-section h2 {
-            font-size: 28px;
+        .gains h2 {
+            color: #1a8cff;
+            font-size: 22px;
             margin-bottom: 20px;
         }
 
-        .gains-section h2 i {
-            color: #f39c12;
-        }
-
-        .gains-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin-top: 25px;
-        }
-
-        .gain-card {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-        }
-
-        .gain-card .big-number {
+        .gain-chiffre {
             font-size: 48px;
             font-weight: bold;
-            color: #f39c12;
+            color: #1a8cff;
         }
 
-        .gain-card p {
-            margin-top: 10px;
-            font-size: 14px;
-        }
-
-        .roi-badge {
-            background: #f39c12;
-            color: #1a3a5c;
-            padding: 15px;
-            border-radius: 50px;
-            margin-top: 25px;
-            font-weight: bold;
+        .gain-texte {
             font-size: 18px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .gain-detail {
+            font-size: 14px;
+            color: #555;
+            margin-top: 15px;
+        }
+
+        .separateur {
+            width: 50px;
+            height: 2px;
+            background: #1a8cff;
+            margin: 20px auto;
         }
 
         /* Tableau prestations */
-        .prestations-table {
+        .table-prestations {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 30px;
         }
 
-        .prestations-table th {
-            background: #f8f9fa;
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-            color: #1a3a5c;
-            border-bottom: 2px solid #ddd;
-        }
-
-        .prestations-table td {
-            padding: 15px;
+        .table-prestations td {
+            padding: 12px 0;
             border-bottom: 1px solid #eee;
         }
 
-        .prix {
-            font-weight: bold;
-            color: #c0392b;
+        .table-prestations td:last-child {
             text-align: right;
+            font-weight: bold;
+            color: #1a8cff;
         }
 
-        .total-line {
+        .total {
             background: #f8f9fa;
             font-weight: bold;
         }
 
-        .total-line td {
+        .total td {
+            padding: 15px 0;
             font-size: 18px;
-            padding: 20px 15px;
         }
 
-        .total-line .prix {
+        .total td:last-child {
             font-size: 24px;
-            color: #c0392b;
+            color: #1a8cff;
         }
 
-        /* Offre spéciale */
-        .offre-speciale {
-            background: #e8f5e9;
-            border-left: 5px solid #4caf50;
+        /* Offre */
+        .offre {
+            background: #f0f7ff;
             padding: 20px;
             border-radius: 15px;
-            margin: 30px 0;
-        }
-
-        .offre-speciale h3 {
-            color: #2e7d32;
-            margin-bottom: 10px;
-        }
-
-        .offre-speciale .gratuit {
-            font-size: 28px;
-            font-weight: bold;
-            color: #4caf50;
-        }
-
-        /* SECTION EXPERTISE & PROMO */
-        .expertise-section {
-            background: #f0f4f8;
-            padding: 30px;
-            border-radius: 20px;
-            margin: 30px 0;
+            margin: 25px 0;
             text-align: center;
         }
 
-        .expertise-section h3 {
-            color: #1a3a5c;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .expertise-badges {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin: 25px 0;
-        }
-
-        .expertise-badge {
-            background: #c0392b;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 14px;
-        }
-
-        .portfolio-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin: 25px 0;
-        }
-
-        .portfolio-link {
-            background: white;
-            padding: 12px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: #1a3a5c;
-            font-weight: 500;
-            transition: all 0.3s;
-            border: 1px solid #ddd;
-        }
-
-        .portfolio-link:hover {
-            background: #c0392b;
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .contact-expert {
-            background: #1a3a5c;
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            margin-top: 20px;
-        }
-
-        .contact-expert a {
-            color: #f39c12;
-            text-decoration: none;
+        .offre .label {
+            color: #1a8cff;
             font-weight: bold;
+            margin-bottom: 10px;
         }
 
-        .contact-expert .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 15px;
+        .offre .valeur {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a8cff;
         }
 
-        .contact-expert .social-icons a {
-            color: white;
-            font-size: 28px;
-            transition: transform 0.3s;
+        /* Paiement */
+        .paiement {
+            margin: 25px 0;
         }
 
-        .contact-expert .social-icons a:hover {
-            transform: scale(1.1);
-            color: #f39c12;
-        }
-
-        .conditions {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 30px 0;
-        }
-
-        .conditions h3 {
-            color: #1a3a5c;
+        .paiement h3 {
+            color: #333;
             margin-bottom: 15px;
+            font-size: 18px;
         }
 
-        .conditions ul {
+        .paiement ul {
             list-style: none;
-            padding-left: 0;
         }
 
-        .conditions li {
+        .paiement li {
             padding: 8px 0;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .conditions li i {
-            color: #c0392b;
+        .paiement li i {
+            color: #1a8cff;
             width: 25px;
         }
 
-        .signature-section {
+        /* Signature */
+        .signature {
             display: flex;
             justify-content: space-between;
             margin-top: 40px;
             padding-top: 30px;
-            border-top: 2px solid #eee;
+            border-top: 1px solid #e0e0e0;
             flex-wrap: wrap;
             gap: 30px;
         }
 
-        .signature-box {
+        .sign-box {
             flex: 1;
         }
 
-        .signature-box p {
-            margin-bottom: 10px;
-            font-weight: 500;
+        .sign-box p {
+            margin-bottom: 30px;
+            font-weight: bold;
         }
 
-        .signature-line {
+        .sign-line {
             border-bottom: 1px solid #333;
             width: 80%;
-            margin-top: 30px;
             padding-bottom: 5px;
         }
 
+        /* Bouton */
         .btn-print {
-            background: #c0392b;
+            background: #1a8cff;
             color: white;
             border: none;
-            padding: 12px 30px;
+            width: 100%;
+            padding: 15px;
             border-radius: 50px;
             font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
             margin-top: 30px;
-            width: 100%;
-            font-weight: bold;
             transition: background 0.3s;
         }
 
         .btn-print:hover {
-            background: #8b1a1a;
+            background: #0f6fd9;
         }
 
-        @media (max-width: 768px) {
-            .devis-body {
-                padding: 25px;
+        @media (max-width: 600px) {
+            .corps {
+                padding: 20px;
             }
 
-            .info-section {
+            .gain-chiffre {
+                font-size: 36px;
+            }
+
+            .signature {
                 flex-direction: column;
-            }
-
-            .signature-section {
-                flex-direction: column;
-            }
-
-            .gains-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .prestations-table th,
-            .prestations-table td {
-                padding: 10px;
-                font-size: 14px;
-            }
-
-            .portfolio-links {
-                flex-direction: column;
-                align-items: center;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="devis-container">
-        <div class="devis-header">
+    <div class="devis">
+        <div class="entete">
             <h1>Orphée <span>Protection</span></h1>
-            <p>Spécialiste des stores, résines et protections sur mesure</p>
-            <div class="devis-badge">🔥 PACK DIGITAL PERFORMANCE 🔥</div>
+            <div class="titre">📄 DEVIS PACK DIGITAL ORPHÉE PRO</div>
+            <div class="ref">N° ORP-2025-003 | 22 Mai 2026</div>
         </div>
 
-        <div class="devis-body">
-            <div class="info-section">
-                <div class="info-box">
-                    <h3>📄 DEVIS N°</h3>
-                    <p>ORP-2025-002</p>
-                </div>
-                <div class="info-box">
-                    <h3>📅 DATE</h3>
-                    <p>22 Mai 2026</p>
-                </div>
-                <div class="info-box">
-                    <h3>⏱️ DÉLAI</h3>
-                    <p>3 semaines</p>
-                </div>
-                <div class="info-box">
-                    <h3>📍 CLIENT</h3>
+        <div class="corps">
+            <div class="infos">
+                <div class="info">
+                    <p>Client</p>
                     <p>Orphée Protection - Abidjan</p>
                 </div>
-            </div>
-
-            <!-- SECTION GAINS RÉELS POUR LE CLIENT -->
-            <div class="gains-section">
-                <h2><i class="fas fa-chart-line"></i> CE QUE VOUS GAGNEZ RÉELLEMENT</h2>
-                <div class="gains-grid">
-                    <div class="gain-card">
-                        <div class="big-number">+70%</div>
-                        <p>de nouveaux clients prospects</p><small>Génération de leads qualifiés</small>
-                    </div>
-                    <div class="gain-card">
-                        <div class="big-number">2 500 000 F</div>
-                        <p>de chiffre d'affaire estimé</p><small>sur les 3 premiers mois</small>
-                    </div>
-                    <div class="gain-card">
-                        <div class="big-number">+150</div>
-                        <p>visiteurs uniques par mois</p><small>sur votre site web</small>
-                    </div>
-                    <div class="gain-card">
-                        <div class="big-number">+200%</div>
-                        <p>de visibilité sur Abidjan</p><small>marché local conquêté</small>
-                    </div>
+                <div class="info">
+                    <p>Délai</p>
+                    <p>3 semaines</p>
                 </div>
-                <div class="roi-badge">📈 RETOUR SUR INVESTISSEMENT : Jusqu'à 6x votre investissement !</div>
+                <div class="info">
+                    <p>Validité</p>
+                    <p>30 jours</p>
+                </div>
             </div>
 
-            <!-- Tableau des prestations -->
-            <table class="prestations-table">
-                <thead>
-                    <tr>
-                        <th>PRESTATION</th>
-                        <th>DÉTAIL</th>
-                        <th>MONTANT</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>✅ SITE WEB COMPLET</strong></td>
-                        <td>9 pages, responsive, galerie, formulaire de devis</td>
-                        <td class="prix">150 000 F</td>
-                    </tr>
-                    <tr>
-                        <td><strong>✅ RÉSEAUX SOCIAUX PRO</strong></td>
-                        <td>TikTok Pro, Instagram Pro, WhatsApp Business, Facebook Pro</td>
-                        <td class="prix">100 000 F</td>
-                    </tr>
-                    <tr>
-                        <td><strong>✅ VIDÉOS PUBLICITAIRES</strong></td>
-                        <td>2 vidéos courtes (15-30s) pour TikTok, Instagram, Facebook</td>
-                        <td class="prix">80 000 F</td>
-                    </tr>
-                    <tr>
-                        <td><strong>✅ IA WHATSAPP</strong></td>
-                        <td>Chatbot automatique qui répond aux messages clients</td>
-                        <td class="prix">40 000 F</td>
-                    </tr>
-                    <tr>
-                        <td><strong>✅ CAMPAGNE PUBLICITAIRE</strong></td>
-                        <td>10 jours de publicité ciblée sur Abidjan</td>
-                        <td class="prix">30 000 F</td>
-                    </tr>
-                    <tr class="total-line">
-                        <td colspan="2"><strong>📦 TOTAL INVESTISSEMENT</strong></td>
-                        <td class="prix"><strong>400 000 FCFA</strong></td>
-                    </tr>
-                </tbody>
+            <!-- GAINS RÉELS -->
+            <div class="gains">
+                <h2>💰 CE QUE VOUS GAGNEZ RÉELLEMENT</h2>
+                <div class="gain-chiffre">+5 000 000 F</div>
+                <div class="gain-texte">de chiffre d'affaire estimé</div>
+                <div class="separateur"></div>
+                <div class="gain-chiffre" style="font-size: 36px;">+70%</div>
+                <div class="gain-texte">de nouveaux clients</div>
+                <div class="gain-detail">📈 Retour sur investissement estimé : plus de 10x votre investissement</div>
+                <div class="gain-detail">🎯 +200% de visibilité sur Abidjan en 3 mois</div>
+            </div>
+
+            <!-- PRESTATIONS -->
+            <table class="table-prestations">
+                <tr>
+                    <td>✅ SITE WEB COMPLET</td>
+                    <td>150 000 F</td>
+                </tr>
+                <tr>
+                    <td>✅ RÉSEAUX SOCIAUX PRO (TikTok, Insta, WhatsApp, Facebook)</td>
+                    <td>100 000 F</td>
+                </tr>
+                <tr>
+                    <td>✅ VIDÉOS PUBLICITAIRES (2 vidéos 15-30s)</td>
+                    <td>80 000 F</td>
+                </tr>
+                <tr>
+                    <td>✅ IA WHATSAPP (Chatbot automatique)</td>
+                    <td>40 000 F</td>
+                </tr>
+                <tr>
+                    <td>✅ CAMPAGNE PUBLICITAIRE (10 jours ciblée Abidjan)</td>
+                    <td>30 000 F</td>
+                </tr>
+                <tr class="total">
+                    <td><strong>TOTAL INVESTISSEMENT</strong></td>
+                    <td><strong>400 000 FCFA</strong></td>
+                </tr>
             </table>
 
-            <!-- OFFRE SPÉCIALE : SUIVI GRATUIT 1 MOIS -->
-            <div class="offre-speciale">
-                <h3><i class="fas fa-gift"></i> OFFRE EXCEPTIONNELLE INCLUSE</h3>
-                <p>✅ <strong>Suivi et accompagnement GRATUIT pendant 1 mois</strong> après la livraison</p>
-                <p>✅ Analyse des performances et ajustements des campagnes</p>
-                <p>✅ Rapport hebdomadaire sur le chiffre d'affaire généré</p>
-                <p class="gratuit">🎁 Valeur de cette offre : 150 000 FCFA OFFERTS !</p>
+            <!-- OFFRE SPÉCIALE -->
+            <div class="offre">
+                <div class="label">🎁 OFFRE SPÉCIALE INCLUSE</div>
+                <div class="valeur">Suivi gratuit pendant 1 mois</div>
+                <div style="font-size: 14px; margin-top: 5px;">Analyse des performances + rapports hebdomadaires</div>
+                <div style="font-size: 12px; margin-top: 10px;">Valeur de l'offre : 150 000 FCFA OFFERTS</div>
             </div>
 
-            <!-- SECTION EXPERTISE DIGITAL & PROMO -->
-            <div class="expertise-section">
-                <h3><i class="fas fa-laptop-code"></i> RÉALISÉ PAR YVES - EXPERT EN INFORMATIQUE DIGITAL</h3>
-                <div class="expertise-badges">
-                    <span class="expertise-badge">💻 Développeur Web</span>
-                    <span class="expertise-badge">📱 Marketing Digital</span>
-                    <span class="expertise-badge">🤖 IA & Chatbots</span>
-                    <span class="expertise-badge">📊 Data Scientist</span>
-                </div>
-
-                <p style="margin: 20px 0;"><strong>Autres réalisations récentes :</strong></p>
-                <div class="portfolio-links">
-                    <a href="https://yves1986.github.io/orphee-protection/" class="portfolio-link" target="_blank">🏠
-                        Orphée Protection</a>
-                    <a href="https://yves1986.github.io/GNENESSEMIN/" class="portfolio-link" target="_blank">🏡
-                        Immobilier GNENESSEMIN</a>
-                    <a href="https://yves1986.github.io/mon-site/" class="portfolio-link" target="_blank">🛍️ Sites
-                        vitrines clients</a>
-                    <a href="https://yves1986.github.io/mon-portfolio/" class="portfolio-link" target="_blank">📁 Mon
-                        Portfolio</a>
-                </div>
-
-                <div class="contact-expert">
-                    <p><strong>📢 Pour votre propre communication et visibilité :</strong></p>
-                    <p>Je crée des sites web professionnels, des campagnes publicitaires et des outils IA pour maximiser
-                        votre chiffre d'affaire.</p>
-                    <div class="social-icons">
-                        <a href="https://github.com/yves1986" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://wa.me/2250555555555" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="mailto:contact@yves.com"><i class="fas fa-envelope"></i></a>
-                    </div>
-                    <p style="margin-top: 15px;"><strong>📞 Contactez-moi dès maintenant pour votre projet digital
-                            !</strong></p>
-                </div>
-            </div>
-
-            <div class="conditions">
+            <!-- PAIEMENT -->
+            <div class="paiement">
                 <h3>💵 CONDITIONS DE PAIEMENT</h3>
                 <ul>
                     <li><i class="fas fa-circle" style="font-size: 8px;"></i> 40% à la commande : <strong>160 000
@@ -550,16 +354,17 @@
                 </ul>
             </div>
 
-            <div class="signature-section">
-                <div class="signature-box">
-                    <p><strong>Bon pour accord</strong></p>
-                    <div class="signature-line"></div>
-                    <p style="margin-top: 10px; font-size: 12px; color: #666;">Signature précédée de la mention "Bon
+            <!-- SIGNATURE -->
+            <div class="signature">
+                <div class="sign-box">
+                    <p>Bon pour accord</p>
+                    <div class="sign-line"></div>
+                    <p style="font-size: 12px; color: #888; margin-top: 10px;">Signature précédée de la mention "Bon
                         pour accord"</p>
                 </div>
-                <div class="signature-box">
-                    <p><strong>Cachet de l'entreprise</strong></p>
-                    <div class="signature-line"></div>
+                <div class="sign-box">
+                    <p>Cachet de l'entreprise</p>
+                    <div class="sign-line"></div>
                 </div>
             </div>
 
