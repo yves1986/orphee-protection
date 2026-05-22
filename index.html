@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orphée Protection - Stores, Résines, Pergolas sur mesure</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* COULEURS DU LOGO */
+        :root {
+            --primary: #c0392b;
+            --primary-dark: #8b1a1a;
+            --secondary: #2c3e50;
+            --secondary-light: #34495e;
+            --accent: #e67e22;
+            --light-bg: #f9f9f9;
+        }
+
+        /* HEADER */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .logo p {
+            font-size: 12px;
+            margin-top: 5px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* BANDE ROULANTE (CARROUSEL) */
+        .carousel-section {
+            padding: 40px 0;
+            background: var(--secondary);
+            color: white;
+            overflow: hidden;
+        }
+
+        .carousel-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .carousel-title h2 {
+            font-size: 32px;
+        }
+
+        .carousel-title p {
+            opacity: 0.9;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 20px;
+            scrollbar-width: none;
+        }
+
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-item {
+            min-width: 280px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .carousel-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .carousel-item .info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .carousel-item .info h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .carousel-item .info .price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 10;
+        }
+
+        .carousel-btn.prev {
+            left: -20px;
+        }
+
+        .carousel-btn.next {
+            right: -20px;
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .highlight {
+            color: var(--accent);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--secondary);
+        }
+
+        /* AVANTAGES */
+        .advantages {
+            padding: 60px 0;
+            background: var(--light-bg);
+        }
+
+        .advantages .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .advantage-card {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .advantage-card i {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* SECTIONS PRODUITS */
+        .products-section {
+            padding: 80px 0;
+        }
+
+        .products-section.bg-light {
+            background: var(--light-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .section-header h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+            margin: 15px auto 0;
+        }
+
+        .section-header p {
+            color: #666;
+            font-size: 18px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .product-img {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-card h3 {
+            padding: 20px 20px 10px;
+            color: var(--secondary);
+        }
+
+        .product-card p {
+            padding: 0 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .product-footer {
+            padding: 15px 20px 20px;
+        }
+
+        .btn-demand {
+            width: 100%;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-demand:hover {
+            background: var(--primary);
+        }
+
+        .text-content {
+            text-align: center;
+            max-width: 1000px;
+            margin: 40px auto 0;
+        }
+
+        .highlight-text {
+            background: #f0f4f8;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
+        }
+
+        /* ANIMATION FADE IN */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: white;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            color: #333;
+        }
+
+        .contact-form h3 {
+            color: var(--secondary);
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        .info-item i {
+            font-size: 28px;
+            color: var(--accent);
+            width: 50px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/orphee-banniere.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0f1a2c;
+            color: #fff;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 span {
+            color: var(--primary);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary);
+        }
+
+        .footer-col form {
+            display: flex;
+        }
+
+        .footer-col input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .footer-col button {
+            padding: 12px 18px;
+            background: var(--primary);
+            border: none;
+            color: white;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .footer-col button:hover {
+            background: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid #2a3a5c;
+        }
+
+        /* WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background: #20b859;
+        }
+
+        /* GALERIE */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 20px;
+            color: white;
+            transition: bottom 0.3s;
+            text-align: center;
+        }
+
+        .gallery-item:hover .overlay {
+            bottom: 0;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: none;
+            background: white;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .carousel-btn.prev {
+                left: 5px;
+            }
+
+            .carousel-btn.next {
+                right: 5px;
+            }
+        }
+
+        .page {
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        /* AVANTAGES AVEC IMAGES - TAILLE MOYENNE */
+        .advantage-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .advantage-icon {
+            width: 120px;
+            /* Taille moyenne */
+            height: 120px;
+            /* Taille moyenne */
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        .advantage-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .advantage-card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* BANNIÈRE POUR TOUTES LES PAGES SAUF L'ACCUEIL */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/orphee-banniere.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.jpg" alt="Orphée Protection">
+                <p>Stores, Bâches & Résines sur mesure</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" data-page="accueil">Accueil</a></li>
+                    <li><a href="#" data-page="stores-ext">Stores ext.</a></li>
+                    <li><a href="#" data-page="stores-int">Stores int.</a></li>
+                    <li><a href="#" data-page="resines">Résines</a></li>
+                    <li><a href="#" data-page="pergolas">Pergolas</a></li>
+                    <li><a href="#" data-page="brise-vues">Brise-vues</a></li>
+                    <li><a href="#" data-page="clotures">Clôtures</a></li>
+                    <li><a href="#" data-page="galerie">Réalisations</a></li>
+                    <li><a href="#" data-page="contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- ========== PAGE ACCUEIL ========== -->
+    <div id="page-accueil" class="page active">
+        <!-- HERO AVEC IMAGE DE FOND -->
+        <section class="hero"
+            style="background-image: url('images/bannière.png'); background-size: cover; background-position: center; background-attachment: fixed; position: relative;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.55);">
+            </div>
+            <div class="container" style="position: relative; z-index: 2;">
+                <div class="hero-content">
+                    <img src="images/logo.jpg" alt="Orphée Protection"
+                        style="height: 150px; width: auto; margin-bottom: 20px; filter: brightness(0) invert(1);">
+                    <p style="font-size: 18px; letter-spacing: 3px; color: #f39c12;">DEPUIS 2015</p>
+                    <h1>Spécialiste des stores, bâches, <span class="highlight">résines</span><br>et protections sur
+                        mesure
+                    </h1>
+                    <p>Installés à Riviera Faya - À côté du garage CFA</p>
+                    <div class="hero-buttons">
+                        <a href="#" data-page="contact" class="btn-primary">Demander un devis gratuit</a>
+                        <a href="#" data-page="stores-ext" class="btn-secondary">Découvrir nos produits</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BANDE ROULANTE VENTE EXPRESS RÉSINE -->
+        <section class="carousel-section">
+            <div class="carousel-title">
+                <h2>🔥 Vente Express - Résines décoratives</h2>
+                <p>Livraison sous 48h à Abidjan | Paiement à la livraison</p>
+            </div>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" onclick="scrollCarousel(-1)">❮</button>
+                <div class="carousel" id="resineCarousel">
+                    <div class="carousel-item"><img src="images/images (2).jpeg" alt="Résine sol extérieur">
+                        <div class="info">
+                            <h3>Résine sol extérieur</h3>
+                            <p class="price">35 000 FCFA/m²</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item"><img src="images/resines/beton ciré.jpg" alt="Béton ciré">
+                        <div class="info">
+                            <h3>Béton ciré</h3>
+                            <p class="price">42 000 FCFA/m²</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item"><img src="images/resines/resine interieur.jpeg" alt="Résine mur">
+                        <div class="info">
+                            <h3>Résine mur intérieur</h3>
+                            <p class="price">28 000 FCFA/m²</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item"><img src="images/resines/Kit résine.jpg" alt="Kit DIY">
+                        <div class="info">
+                            <h3>Kit résine DIY</h3>
+                            <p class="price">45 000 FCFA</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item"><img src="images/resines/resine garage.jpeg" alt="Résine garage">
+                        <div class="info">
+                            <h3>Résine garage</h3>
+                            <p class="price">38 000 FCFA/m²</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item"><img src="images/resine-terrasse.jpg" alt="Résine terrasse">
+                        <div class="info">
+                            <h3>Résine terrasse</h3>
+                            <p class="price">32 000 FCFA/m²</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn next" onclick="scrollCarousel(1)">❯</button>
+            </div>
+        </section>
+
+        <section class="advantages">
+            <div class="container">
+                <div class="advantage-card">
+                    <img src="images/Ophée images/livraison.png" alt="Livraison offerte" class="advantage-icon">
+                    <h3>Livraison offerte</h3>
+                    <p>Sur Abidjan à partir de 150 000 FCFA</p>
+                </div>
+                <div class="advantage-card">
+                    <img src="images/Ophée images/orphée-banniere.png" alt="Sur mesure" class="advantage-icon">
+                    <h3>Sur mesure</h3>
+                    <p>Dimensions personnalisées</p>
+                </div>
+                <div class="advantage-card">
+                    <img src="images/Ophée images/expert.png" alt="Experts à votre écoute" class="advantage-icon">
+                    <h3>Experts à votre écoute</h3>
+                    <p>Conseils par WhatsApp</p>
+                </div>
+                <div class="advantage-card">
+                    <img src="images/logo.jpg" alt="+2100 avis clients" class="advantage-icon">
+                    <h3>+2100 avis clients</h3>
+                    <p>Clients satisfaits</p>
+                </div>
+            </div>
+        </section>
+        <section class="products-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Nos produits</h2>
+                    <p>Découvrez toute notre gamme</p>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-img"><img
+                                src="images/store-banne-coffre-sur-mesure-jusqu-a-10-x-35m-manaus-toile-acrylique.webp"
+                                alt="Stores extérieurs"></div>
+                        <h3>Stores extérieurs</h3>
+                        <p>Banne, corbeille, vertical...</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Stores extérieurs">Demander
+                                un devis</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img
+                                src="images/store-enrouleur-d-interieur-jour-nuit-sur-mesure-collection-glamour.webp"
+                                alt="Stores intérieurs"></div>
+                        <h3>Stores intérieurs</h3>
+                        <p>Vénitien, enrouleur, jour/nuit...</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Stores intérieurs">Demander
+                                un devis</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/resine-epoxy-26.10.2021.jpg" alt="Résines"></div>
+                        <h3>Résines</h3>
+                        <p>Vente et pose sur mesure</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Résines">Demander un
+                                devis</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/pergola-bioclimatique-autoportante.webp"
+                                alt="Pergolas"></div>
+                        <h3>Pergolas</h3>
+                        <p>Bioclimatique, adossée...</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Pergolas">Demander un
+                                devis</button></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========== PAGE STORES EXTÉRIEURS ========== -->
+    <div id="page-stores-ext" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Titre de la page</h1>
+                <p>Sous-titre de la page</p>
+            </div>
+        </section><!-- ← C'est ICI que la bannière s'affiche -->
+        <div class="container">
+            <h1>Stores extérieurs</h1>
+            <p>Protection solaire sur mesure pour votre terrasse</p>
+        </div>
+        </section>
+    </div>
+    <section class="products-section">
+        <div class="container">
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img"><img src="images/store-banne-coffre-sur-mesure.webp" alt="Store banne">
+                    </div>
+                    <h3>Store banne</h3>
+                    <p>Idéal pour terrasses et commerces</p>
+                    <div class="product-footer"><button class="btn-demand" data-produit="Store banne">Demander un
+                            devis</button></div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img"><img src="images/store-a-descente-verticale-sur-mesure.webp"
+                            alt="Store vertical"></div>
+                    <h3>Store vertical</h3>
+                    <p>Protection pour façades</p>
+                    <div class="product-footer"><button class="btn-demand" data-produit="Store vertical">Demander un
+                            devis</button></div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img"><img src="images/store-californien-avec-toile-occultante.webp"
+                            alt="Store californien"></div>
+                    <h3>Store californien</h3>
+                    <p>Design élégant pour grandes baies</p>
+                    <div class="product-footer"><button class="btn-demand" data-produit="Store californien">Demander
+                            un devis</button></div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img"><img src="images/store-coffre-descente-verticale.webp" alt="Store coffre">
+                    </div>
+                    <h3>Store coffre</h3>
+                    <p>Fermeture complète de la toile</p>
+                    <div class="product-footer"><button class="btn-demand" data-produit="Store coffre">Demander un
+                            devis</button></div>
+                </div>
+            </div>
+            <div class="text-content">
+                <p class="highlight-text">Tous nos stores extérieurs sont de qualité professionnelle. Nous vous
+                    proposons une gamme complète de stores sur mesure pour votre terrasse, jardin ou devanture de
+                    magasin.</p>
+            </div>
+        </div>
+    </section>
+    </div>
+
+    <!-- ========== PAGE STORES INTÉRIEURS ========== -->
+    <div id="page-stores-int" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Stores intérieurs</h1>
+                <p>Design et confort pour votre habitat</p>
+            </div>
+        </section>
+        <section class="products-section">
+            <div class="container">
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/store-venitien-aluminium-ancolie.webp"
+                                alt="Store vénitien"></div>
+                        <h3>Store vénitien</h3>
+                        <p>Lames orientables en aluminium</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Store vénitien">Demander un
+                                devis</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img
+                                src="images/store-enrouleur-jour-nuit-sur-mesure-collection-dream.webp"
+                                alt="Store jour nuit"></div>
+                        <h3>Store jour/nuit</h3>
+                        <p>Lumière ou occultation totale</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Store jour/nuit">Demander
+                                un devis</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/store-enrouleur-occultant-grandes-dimensions.webp"
+                                alt="Store enrouleur"></div>
+                        <h3>Store enrouleur</h3>
+                        <p>Occultant ou tamisant</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Store enrouleur">Demander
+                                un devis</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/store-plisse-pour-fenetre-classique.webp"
+                                alt="Store plissé"></div>
+                        <h3>Store plissé</h3>
+                        <p>Moderne, s'adapte à toutes les fenêtres</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Store plissé">Demander un
+                                devis</button></div>
+                    </div>
+                </div>
+                <div class="text-content">
+                    <p class="highlight-text">Tous nos stores intérieurs sont de gamme professionnelle. Nous
+                        sélectionnons nos fabricants avec soin pour vous offrir qualité et durabilité.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========== PAGE RÉSINES ========== -->
+    <div id="page-resines" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Résines décoratives</h1>
+                <p>Vente de kits ou pose par nos experts</p>
+            </div>
+        </section>
+        <section class="products-section">
+            <div class="container">
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/resine-sol-exterieur.jpg" alt="Résine sol extérieur">
+                        </div>
+                        <h3>Résine sol extérieur</h3>
+                        <p>Anti-dérapant, résiste aux UV</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Résine sol extérieur">Vente
+                                / Pose</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/beton-cire.jpg" alt="Béton ciré"></div>
+                        <h3>Béton ciré</h3>
+                        <p>Moderne et épuré</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Béton ciré">Vente /
+                                Pose</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/resine-mur-interieur.jpg" alt="Résine mur"></div>
+                        <h3>Résine mur intérieur</h3>
+                        <p>Effet marbré, facile d'entretien</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Résine mur intérieur">Vente
+                                / Pose</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/kit-resine-diy.jpg" alt="Kit DIY"></div>
+                        <h3>Kit résine DIY</h3>
+                        <p>À partir de 45 000 FCFA</p>
+                        <div class="product-footer"><button class="btn-demand"
+                                data-produit="Kit résine DIY">Acheter</button></div>
+                    </div>
+                </div>
+                <div class="text-content">
+                    <p class="highlight-text">Que vous soyez bricoleur ou que vous préfériez confier votre projet à un
+                        professionnel, Orphée Protection vous accompagne. Demandez votre devis gratuit !</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========== PAGE PERGOLAS ========== -->
+    <div id="page-pergolas" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Pergolas</h1>
+                <p>Quel type de pergola choisir ?</p>
+            </div>
+        </section>
+        <section class="products-section">
+            <div class="container">
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/pergola-bioclimatique-adossée-epicea-sur-mesure.webp"
+                                alt="Pergola bioclimatique"></div>
+                        <h3>Pergola bioclimatique</h3>
+                        <p>Lames orientables</p>
+                        <div class="product-footer"><button class="btn-demand"
+                                data-produit="Pergola bioclimatique">Demander un devis</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img
+                                src="images/pergola-coulissante-cancun-avec-toile-retractable.webp"
+                                alt="Pergola rétractable"></div>
+                        <h3>Pergola rétractable</h3>
+                        <p>Toile enroulable</p>
+                        <div class="product-footer"><button class="btn-demand"
+                                data-produit="Pergola rétractable">Demander un devis</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/pergola-bioclimatique-kaki-adossée-sur-mesure.webp"
+                                alt="Pergola adossée"></div>
+                        <h3>Pergola adossée</h3>
+                        <p>Fixée au mur</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Pergola adossée">Demander
+                                un devis</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/pergola-bioclimatique-autoportante.webp"
+                                alt="Pergola autoportante"></div>
+                        <h3>Pergola autoportante</h3>
+                        <p>Indépendante</p>
+                        <div class="product-footer"><button class="btn-demand"
+                                data-produit="Pergola autoportante">Demander un devis</button></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========== PAGE BRISE-VUES ========== -->
+    <div id="page-brise-vues" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Brise-vues</h1>
+                <p>Préservez votre intimité avec élégance</p>
+            </div>
+        </section>
+        <section class="products-section">
+            <div class="container">
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/brise-vue-blanco-sauleda-sensation.webp"
+                                alt="Brise-vue Sauleda"></div>
+                        <h3>Brise-vue Sauleda</h3>
+                        <p>Toile technique résistante</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Brise-vue Sauleda">Demander
+                                un devis</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/brise-vue-bs-bleu-dickson-orchestra-8910.webp"
+                                alt="Brise-vue Dickson"></div>
+                        <h3>Brise-vue Dickson</h3>
+                        <p>Large choix de coloris</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Brise-vue Dickson">Demander
+                                un devis</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/claustra-bokeh-pvc-gris-anthracite-kit-complet.webp"
+                                alt="Claustra PVC"></div>
+                        <h3>Claustra PVC</h3>
+                        <p>Design moderne</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Claustra PVC">Demander un
+                                devis</button></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========== PAGE CLÔTURES ========== -->
+    <div id="page-clotures" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Clôtures</h1>
+                <p>Sécurisez et embellissez votre extérieur</p>
+            </div>
+        </section>
+        <section class="products-section">
+            <div class="container">
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/cloture-pvc-ajourebe-tyrel-100-blanc.webp"
+                                alt="Clôture PVC"></div>
+                        <h3>Clôture PVC</h3>
+                        <p>Résistante, sans entretien</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Clôture PVC">Demander un
+                                devis</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/cloture-meze-en-kit-complet.webp" alt="Claustra">
+                        </div>
+                        <h3>Claustra</h3>
+                        <p>Panneaux ajourés design</p>
+                        <div class="product-footer"><button class="btn-demand" data-produit="Claustra">Demander un
+                                devis</button></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img"><img src="images/portillon-ajoure-revel-en-pvc-cadre-en-aluminium.webp"
+                                alt="Portillon"></div>
+                        <h3>Portillons sur mesure</h3>
+                        <p>Harmonie avec votre clôture</p>
+                        <div class="product-footer"><button class="btn-demand"
+                                data-produit="Portillon sur mesure">Demander un devis</button></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========== PAGE GALERIE ========== -->
+    <div id="page-galerie" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Nos réalisations</h1>
+                <p>Découvrez nos projets en images</p>
+            </div>
+        </section>
+        <section class="products-section">
+            <div class="container">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Tous</button>
+                    <button class="filter-btn" data-filter="stores-ext">Stores extérieurs</button>
+                    <button class="filter-btn" data-filter="stores-int">Stores intérieurs</button>
+                    <button class="filter-btn" data-filter="resines">Résines</button>
+                    <button class="filter-btn" data-filter="pergolas">Pergolas</button>
+                </div>
+                <div class="gallery-grid" id="galleryGrid"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========== PAGE CONTACT ========== -->
+    <div id="page-contact" class="page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Contactez-nous</h1>
+                <p>Une question ? Un projet ? Nous sommes à votre écoute</p>
+            </div>
+        </section>
+        <section class="contact">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h2>Parlons de votre projet</h2>
+                        <div class="info-item"><i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Notre showroom</h4>
+                                <p>Riviera Faya - À côté du garage CFA, Abidjan</p>
+                            </div>
+                        </div>
+                        <div class="info-item"><i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h4>Téléphone / WhatsApp</h4>
+                                <p>+225 05 55 55 55 55</p>
+                            </div>
+                        </div>
+                        <div class="info-item"><i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>contact@orphee-protection.ci</p>
+                            </div>
+                        </div>
+                        <div class="social-links"><a href="#"><i class="fab fa-whatsapp"></i></a><a href="#"><i
+                                    class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-tiktok"></i></a></div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Demande de devis gratuite</h3>
+                        <form id="devisForm">
+                            <div class="form-group"><input type="text" id="nom" placeholder="Votre nom complet"
+                                    required></div>
+                            <div class="form-group"><input type="tel" id="telephone" placeholder="Votre téléphone"
+                                    required></div>
+                            <div class="form-group"><input type="email" id="email" placeholder="Votre email"></div>
+                            <div class="form-group"><select id="service">
+                                    <option value="">Choisissez votre besoin</option>
+                                    <option value="store-exterieur">Store extérieur</option>
+                                    <option value="store-interieur">Store intérieur</option>
+                                    <option value="resine">Résine</option>
+                                    <option value="pergola">Pergola</option>
+                                    <option value="brise-vue">Brise-vue</option>
+                                </select></div>
+                            <div class="form-group"><textarea id="message" rows="4"
+                                    placeholder="Décrivez votre projet"></textarea></div>
+                            <button type="submit" class="btn-primary btn-block">Envoyer ma demande</button>
+                        </form>
+                        <div id="form-message"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Orphée <span>Protection</span></h3>
+                    <p>Spécialiste des stores, résines et pergolas sur mesure en Côte d'Ivoire.</p>
+                    <p><strong>Riviera Faya</strong> - Garage CFA</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="#" data-page="accueil">Accueil</a></li>
+                        <li><a href="#" data-page="stores-ext">Stores extérieurs</a></li>
+                        <li><a href="#" data-page="resines">Résines</a></li>
+                        <li><a href="#" data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Nos engagements</h4>
+                    <ul>
+                        <li>✔️ +2100 avis clients</li>
+                        <li>✔️ Livraison offerte</li>
+                        <li>✔️ Sur mesure</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Orphée Protection - Tous droits réservés | <i class="fas fa-heart"
+                        style="color: var(--primary);"></i> Solutions sur mesure</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/2250555555555" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        // CARROUSEL
+        function scrollCarousel(direction) {
+            const carousel = document.getElementById('resineCarousel');
+            if (carousel) {
+                const scrollAmount = 300;
+                carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        // Navigation entre pages
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('page-' + pageId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Mettre à jour le menu actif
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Menu mobile
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+
+        // Gestion des clics sur les liens
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('data-page');
+                if (pageId) showPage(pageId);
+            });
+        });
+
+        // Gestion des boutons "Demander un devis"
+        document.querySelectorAll('.btn-demand').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const produit = this.getAttribute('data-produit');
+                const messageField = document.getElementById('message');
+                if (messageField) messageField.value = `Je souhaite obtenir un devis pour : ${produit}`;
+                showPage('contact');
+            });
+        });
+
+        // Formulaire de contact
+        document.getElementById('devisForm')?.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const msgDiv = document.getElementById('form-message');
+            msgDiv.innerHTML = '<p style="color: green; padding: 10px; background: #d4edda; border-radius: 10px;">✅ Merci ! Votre demande a été envoyée. Nous vous contacterons sous 24h.</p>';
+            this.reset();
+            setTimeout(() => msgDiv.innerHTML = '', 5000);
+        });
+
+        // Galerie - Données
+        const galleryItems = [
+            { category: 'stores-ext', title: 'Store banne sur terrasse', image: 'images/store-banne-coffre-sur-mesure.webp' },
+            { category: 'stores-ext', title: 'Store vertical pour façade', image: 'images/store-a-descente-verticale-sur-mesure.webp' },
+            { category: 'stores-int', title: 'Store jour/nuit élégant', image: 'images/store-enrouleur-jour-nuit-sur-mesure-collection-dream.webp' },
+            { category: 'stores-int', title: 'Store vénitien aluminium', image: 'images/store-venitien-aluminium-ancolie-lames-de-25-mm.webp' },
+            { category: 'resines', title: 'Résine sol extérieur', image: 'images/resine-sol-exterieur.jpg' },
+            { category: 'resines', title: 'Béton ciré salon', image: 'images/beton-cire.jpg' },
+            { category: 'pergolas', title: 'Pergola bioclimatique', image: 'images/pergola-bioclimatique-adossée-epicea-sur-mesure.webp' }
+        ];
+
+        function renderGallery(filter = 'all') {
+            const grid = document.getElementById('galleryGrid');
+            if (!grid) return;
+            const filtered = filter === 'all' ? galleryItems : galleryItems.filter(item => item.category === filter);
+            if (filtered.length === 0) { grid.innerHTML = '<div class="no-results">Aucune réalisation dans cette catégorie.</div>'; return; }
+            grid.innerHTML = filtered.map(item => `
+            <div class="gallery-item">
+                <img src="${item.image}" alt="${item.title}" onerror="this.src='https://placehold.co/600x400?text=${item.title}'">
+                <div class="overlay"><h3>${item.title}</h3><button class="btn-view" onclick="openModal('${item.image}', '${item.title}')">Voir</button></div>
+            </div>
+        `).join('');
+        }
+
+        window.openModal = function (src, title) {
+            const modal = document.createElement('div');
+            modal.className = 'image-modal';
+            modal.innerHTML = `<div class="modal-content"><span class="close-modal">&times;</span><img src="${src}" alt="${title}" onerror="this.src='https://placehold.co/800x600?text=${title}'"><h3 style="color:white">${title}</h3></div>`;
+            document.body.appendChild(modal);
+            modal.style.display = 'flex';
+            modal.querySelector('.close-modal').onclick = () => modal.remove();
+            modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+        };
+
+        // Filtres galerie
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderGallery(this.getAttribute('data-filter'));
+            });
+        });
+
+        // Initialisation galerie
+        if (document.getElementById('galleryGrid')) renderGallery();
+    </script>
+</body>
+
+</html>
