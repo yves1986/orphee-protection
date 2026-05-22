@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devis - Orphée Protection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a3a5c 0%, #2c5282 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .devis-container {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        /* En-tête */
+        .devis-header {
+            background: linear-gradient(135deg, #c0392b, #8b1a1a);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .devis-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .devis-header h1 span {
+            font-weight: normal;
+            opacity: 0.9;
+        }
+
+        .devis-header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .devis-badge {
+            display: inline-block;
+            background: #f39c12;
+            color: #1a3a5c;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 24px;
+        }
+
+        /* Corps */
+        .devis-body {
+            padding: 40px;
+        }
+
+        /* Infos client */
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .info-box h3 {
+            color: #c0392b;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-box p {
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Tableau des prestations */
+        .prestations-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .prestations-table th {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #1a3a5c;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .prestations-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .prestations-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .prix {
+            font-weight: bold;
+            color: #c0392b;
+            text-align: right;
+        }
+
+        .total-line {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .total-line td {
+            font-size: 18px;
+            padding: 20px 15px;
+        }
+
+        .total-line .prix {
+            font-size: 24px;
+            color: #c0392b;
+        }
+
+        /* Conditions */
+        .conditions {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .conditions h3 {
+            color: #1a3a5c;
+            margin-bottom: 15px;
+        }
+
+        .conditions ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .conditions li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .conditions li i {
+            color: #c0392b;
+            width: 25px;
+        }
+
+        /* Signature */
+        .signature-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+        }
+
+        .signature-box {
+            flex: 1;
+        }
+
+        .signature-box p {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid #333;
+            width: 80%;
+            margin-top: 30px;
+            padding-bottom: 5px;
+        }
+
+        .btn-print {
+            background: #c0392b;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 30px;
+            width: 100%;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-print:hover {
+            background: #8b1a1a;
+        }
+
+        @media (max-width: 768px) {
+            .devis-body {
+                padding: 25px;
+            }
+
+            .info-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .signature-section {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .prestations-table th,
+            .prestations-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="devis-container">
+        <div class="devis-header">
+            <h1>Orphée <span>Protection</span></h1>
+            <p>Spécialiste des stores, résines et protections sur mesure</p>
+            <div class="devis-badge">🔥 DEVIS PACK DIGITAL COMPLET 🔥</div>
+        </div>
+
+        <div class="devis-body">
+            <div class="info-section">
+                <div class="info-box">
+                    <h3>📄 DEVIS N°</h3>
+                    <p>ORP-2025-002</p>
+                </div>
+                <div class="info-box">
+                    <h3>📅 DATE</h3>
+                    <p>22 Mai 2026</p>
+                </div>
+                <div class="info-box">
+                    <h3>⏱️ DÉLAI</h3>
+                    <p>3 semaines</p>
+                </div>
+                <div class="info-box">
+                    <h3>📍 CLIENT</h3>
+                    <p>Orphée Protection - Abidjan</p>
+                </div>
+            </div>
+
+            <table class="prestations-table">
+                <thead>
+                    <tr>
+                        <th>PRESTATION</th>
+                        <th>DÉTAIL</th>
+                        <th>MONTANT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>✅ SITE WEB COMPLET</strong></td>
+                        <td>9 pages, responsive, galerie, formulaire de devis</td>
+                        <td class="prix">150 000 F</td>
+                    </tr>
+                    <tr>
+                        <td><strong>✅ RÉSEAUX SOCIAUX PRO</strong></td>
+                        <td>TikTok Pro, Instagram Pro, WhatsApp Business, Facebook Pro</td>
+                        <td class="prix">100 000 F</td>
+                    </tr>
+                    <tr>
+                        <td><strong>✅ VIDÉOS PUBLICITAIRES</strong></td>
+                        <td>2 vidéos courtes (15-30s) pour TikTok, Instagram, Facebook</td>
+                        <td class="prix">80 000 F</td>
+                    </tr>
+                    <tr>
+                        <td><strong>✅ IA WHATSAPP</strong></td>
+                        <td>Chatbot automatique qui répond aux messages clients</td>
+                        <td class="prix">40 000 F</td>
+                    </tr>
+                    <tr>
+                        <td><strong>✅ CAMPAGNE PUBLICITAIRE</strong></td>
+                        <td>10 jours de publicité ciblée sur Abidjan</td>
+                        <td class="prix">30 000 F</td>
+                    </tr>
+                    <tr class="total-line">
+                        <td colspan="2"><strong>📦 TOTAL</strong></td>
+                        <td class="prix"><strong>400 000 FCFA</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="conditions">
+                <h3>💵 CONDITIONS DE PAIEMENT</h3>
+                <ul>
+                    <li><i class="fas fa-circle" style="font-size: 8px;"></i> 40% à la commande : <strong>160 000
+                            FCFA</strong></li>
+                    <li><i class="fas fa-circle" style="font-size: 8px;"></i> 30% à la validation : <strong>120 000
+                            FCFA</strong></li>
+                    <li><i class="fas fa-circle" style="font-size: 8px;"></i> 30% à la livraison : <strong>120 000
+                            FCFA</strong></li>
+                </ul>
+            </div>
+
+            <div class="conditions">
+                <h3>✅ CE QUE VOUS OBTENEZ</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Site web professionnel (9 pages)</li>
+                    <li><i class="fas fa-check-circle"></i> 4 comptes réseaux sociaux configurés</li>
+                    <li><i class="fas fa-check-circle"></i> 2 vidéos publicitaires prêtes à diffuser</li>
+                    <li><i class="fas fa-check-circle"></i> Agent IA WhatsApp qui répond automatiquement</li>
+                    <li><i class="fas fa-check-circle"></i> Campagne publicitaire de 10 jours</li>
+                    <li><i class="fas fa-check-circle"></i> Support et formation inclus</li>
+                </ul>
+            </div>
+
+            <div class="signature-section">
+                <div class="signature-box">
+                    <p><strong>Bon pour accord</strong></p>
+                    <div class="signature-line"></div>
+                    <p style="margin-top: 10px; font-size: 12px; color: #666;">Signature précédée de la mention "Bon
+                        pour accord"</p>
+                </div>
+                <div class="signature-box">
+                    <p><strong>Cachet de l'entreprise</strong></p>
+                    <div class="signature-line"></div>
+                </div>
+            </div>
+
+            <button class="btn-print" onclick="window.print()">
+                🖨️ IMPRIMER LE DEVIS
+            </button>
+        </div>
+    </div>
+
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</body>
+
+</html>
